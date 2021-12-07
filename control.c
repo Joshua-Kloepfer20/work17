@@ -31,6 +31,11 @@ int main(int argc, char *argv[]) {
 		int semd = semget(KEY, 0, 0);
 		semctl(semd, IPC_RMID, 0);
 		shmctl(shmd, IPC_RMID, 0);
+		char story[1000];
+		int fd_story = open("telephone.txt", O_RDONLY);
+		int x = read(fd_story, story, 1000);
+		story[x] = '\0';
+		printf("%s", story);
 	}
 	return 0;
 }
